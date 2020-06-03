@@ -1,0 +1,30 @@
+{% extends 'diary/base.html' %}
+
+{% block content %}
+<h1>
+    日記帳アプリケーションです。
+</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>タイトル</th>
+        <th>内容</th>
+        <th>日付</th>
+        <th colspan="2"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for day in day_list %}
+    <tr>
+        <td><a href="{% url 'diary:detail' day.pk %}" >{{day.title}}</a></td>
+        <td>{{day.text}}</td>
+        <td>{{day.date}}</td>
+        <td><a href="{% url　'diary:update'　day.pk %}">更新</a></td>
+        <td><a href="{% url　'diary:delete'　day.pk %}">削除</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
